@@ -1,0 +1,143 @@
+.recipe-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.recipe-container {
+    padding: 2rem 0;
+    background-color: #ffffff;
+}
+
+.recipe-section {
+    margin-bottom: 2rem;
+}
+
+.recipe-description {
+    font-size: 1rem;
+    color: #555;
+}
+
+.recipe-ingredients {
+    padding-left: 1.5rem;
+}
+
+.recipe-ingredients  {
+    margin-bottom: 0.5rem;
+}
+
+.recipe-tags {
+    list-style: none;
+    padding-left: 0;
+}
+
+.recipe-tags li {
+    display: inline-block;
+    margin: 0 0.5rem;
+    padding: 0.2rem 0.5rem;
+    background-color: #f2f2f2;
+    border-radius: 0.25rem;
+    font-size: 0.8rem;
+    color: #333;
+}
+
+.diet li {
+    background-color: rgb(230, 225, 179);
+}
+.recipe-image {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+}
+
+.recipe-reviews {
+    margin-top: 2rem;
+}
+
+.review-card {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.review-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.review-card-author {
+    font-weight: bold;
+}
+
+.review-card-date {
+    color: #777;
+}
+
+.review-card-content {
+    margin-top: 0.5rem;
+    color: #333;
+}
+
+
+.dropdown-toggle::after {
+    display: none !important; 
+}
+
+
+.allergen {
+    color: crimson;
+    text-shadow: 2px 2px 4px rgba(139, 0, 0, 0.4);
+}
+
+.ingredient-button{
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px; 
+    height: 20px;
+    border-radius: 50%;
+    text-decoration: none; 
+    margin-right: 10px;
+}
+
+.add {
+    color: #3A9691;
+}
+
+.tracker {
+    position: relative;
+    display: inline-block;
+}
+  
+.tracker:hover::before {
+    content: "You are in this step";
+    position: absolute;
+    top: 50%;
+    left: -100px;
+    background-color: #554e4e90;
+    color: #fff;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+    border-radius: 4px;
+    font-size: 10px;
+    white-space: nowrap;
+    transform: translateY(-50%);
+}
+.remove {
+    color: rgb(233, 81, 81);
+}
+
+.step {
+    line-height: 25px;
+}
+
+.current-step {
+    font-size: 1.2rem;
+    text-shadow: 2px 2px 4px #3a969157;
+    line-height: 35px;
+}

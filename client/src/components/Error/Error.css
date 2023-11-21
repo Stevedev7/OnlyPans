@@ -1,0 +1,15 @@
+.error-container {
+    min-height: calc(100vh - 56px);
+}
+
+.error-h1 {
+    text-align: center;
+}
+
+.error-container-div{
+    position: absolute;
+    top: calc(50% - 56px);
+    left: 50%;
+    transform: translateY(-50%);
+    transform: translateX(-50%)
+}

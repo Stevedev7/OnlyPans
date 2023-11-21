@@ -1,0 +1,184 @@
+.user-profile-card {
+    border: none;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+  
+.profile-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 auto;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+  
+.profile-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+  
+.profile-username {
+    color: #3A9691;
+    font-weight: 500;
+    margin-top: 5px;
+}
+  
+.btn-primary {
+    background-color: #3A9691;
+    border-color: #3A9691;
+}
+  
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:hover {
+    background-color: #45abac;
+    border-color: #45abac;
+}
+.profile-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+  
+.profile-button {
+    flex: 1;
+    padding: 10px 0;
+    text-align: center;
+    color: #3A9691;
+    font-weight: bold;
+    border: 1px solid #3A9691;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s;
+}
+  
+.profile-button:hover {
+    background-color: #3A9691;
+    color: #ffffff;
+    border-color: #3A9691;
+}  
+
+.btn-edit {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: color 0.3s;
+}
+  
+.btn-edit:hover {
+    color: #3A9691;
+}
+  
+.edit-icon {
+    margin-right: 8px;
+    font-size: 18px;
+}
+  
+.edit-icon:hover {
+    transform: rotate(20deg);
+    transition: transform 0.3s;
+}
+  
+  
+.user-profile-card {
+    position: relative; /* Set the parent container as a reference for absolute positioning */
+  
+}
+  
+.edit-icon-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+}
+  
+.edit-icon {
+    font-size: 24px;
+    color: #3A9691;
+    cursor: pointer;
+    transition: transform 0.3s, color 0.3s;
+}
+  
+.edit-icon:hover {
+    color: #45abac;
+    transform: rotate(20deg);
+}
+  
+.user-profile-card {
+    position: relative;
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+  
+.edit-icon-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+}
+  
+.edit-icon {
+    font-size: 24px;
+    color: #3A9691;
+    cursor: pointer;
+    transition: transform 0.3s, color 0.3s;
+}
+  
+.edit-icon:hover {
+    color: #45abac;
+    transform: rotate(20deg);
+}
+  
+.profile-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 auto;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+  
+.profile-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+  
+.profile-username {
+    color: #3A9691;
+    font-weight: 500;
+    margin-top: 5px;
+}
+  
+.profile-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+  
+.profile-button {
+    flex: 1;
+    padding: 10px 0;
+    text-align: center;
+    color: #3A9691;
+    font-weight: bold;
+    border: 1px solid #3A9691;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s;
+}
+  
+.profile-button:hover {
+    background-color: #3A9691;
+    color: #ffffff;
+    border-color: #3A9691;
+}

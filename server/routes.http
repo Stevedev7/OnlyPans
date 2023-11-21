@@ -1,0 +1,114 @@
+post http://localhost:8000/api/recipes/new
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWxJZCI6ImpvaG5kb2VAZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiSm9obiIsImxhc3ROYW1lIjoiRG9lIiwidmVyaWZpZWQiOmZhbHNlLCJpYXQiOjE2ODk5MzA1MTgsImV4cCI6MTY4OTkzMjMxOH0.7aVneVwJaD1lrFO1QPUE9tsObkKnHk9inu-8lpo-9Tc
+
+{
+    "title": "Biryani",
+    "description": "This is an indian dish",
+    "steps": [
+        "Dummy step 1",
+        "Dummy step 2",
+        "dummy step 3"
+    ],
+    "cuisine": 14,
+    "tags": [
+        1,
+        2,
+        3
+    ],
+    "diet": 10,
+    "ingredients":
+    [
+        {
+            "id": 181,
+            "quantity": 4,
+            "unit": 2
+        },
+        {
+            "id": 318,
+            "quantity": 250,
+            "unit": 86
+        }
+    ],
+    "images": [],
+    "course": "Main_Course",
+    "allergen": [
+        2
+    ]
+}
+
+###
+post http://localhost:8000/api/tags/new
+Content-Type: application/json
+
+{
+    "tags": [
+        {
+            "text": "indian"
+        },
+        {
+            "text": "spicy"
+        },
+        {
+            "text": "Yummy"
+        },
+        {
+            "text": "Oily"
+        },
+        {
+            "text": "rice"
+        },
+        {
+            "text": "chicken"
+        },
+        {
+            "text": "india"
+        }
+    ]
+}
+
+###
+get http://localhost:8000/api/cuisines/all
+
+###
+get http://localhost:8000/api/cuisines/14
+
+###
+get http://localhost:8000/api/cuisines/search?q=Indian
+
+###
+get http://localhost:8000/api/allergens/all
+
+###
+get http://localhost:8000/api/allergens/69
+
+###
+get http://localhost:8000/api/allergens/search?q=nut
+###
+get http://localhost:8000/api/diets/all
+
+###
+get http://localhost:8000/api/diets/6
+
+###
+get http://localhost:8000/api/diets/search?q=keto
+
+###
+get http://localhost:8000/api/units/all
+
+###
+get http://localhost:8000/api/units/6
+
+###
+get http://localhost:8000/api/units/search?q=cup
+
+###
+get http://localhost:8000/api/tags/search?q=i
+
+
+###
+delete http://localhost:8000/api/recipes/3/reviews/4
+
+
+###
+get http://localhost:9000/api/recipes/1/ratings

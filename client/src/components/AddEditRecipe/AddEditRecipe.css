@@ -1,0 +1,66 @@
+/* AddRecipe.css */
+
+/* Apply a max-width and center the form */
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  /* Add spacing between form elements */
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Style input fields */
+  .form-control {
+    border-color: #ced4da;
+  }
+  
+  /* Style floating labels */
+  .form-floating-label {
+    font-size: 0.9rem;
+    color: #6c757d;
+  }
+  
+  /* Style buttons */
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  /* Style tags select */
+  .react-select__control {
+    border-color: #ced4da;
+  }
+  
+  /* Style ingredient list */
+  .ingredient-list {
+    margin-top: 1rem;
+    list-style: none;
+    padding: 0;
+  }
+  
+  .ingredient-list-item {
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Style allergens select */
+  .async-select__control {
+    border-color: #ced4da;
+  }
+  
+  /* Style file picker */
+  .file-picker {
+    margin-top: 1rem;
+  }
+  
+  /* Style icon */
+  .icon {
+    margin-right: 0.5rem;
+  }
+  
+  /* Style heading */
+  .form-heading {
+    margin-bottom: 1.5rem;
+  }
+  

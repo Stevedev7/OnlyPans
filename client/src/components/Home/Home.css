@@ -1,0 +1,23 @@
+.home {
+    background-image: url(/assets/img/Home\ background.jpeg);
+    background-color: none;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-width: 100vw;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.categories-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.categories-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5rem;
+}

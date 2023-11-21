@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,500;1,400&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'PT Sans', sans-serif !important;
+}
+
+h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+}
+
+#react-select-3-listbox {
+    z-index: 200;
+}
+
+body {
+    background-color: #fbfbfb;
+}
+
+.btn-primary {
+    background-color: #3A9691;
+    box-shadow: 0 0 2px #3A9691;
+    border: #3A9691;
+    color: #ffffff;
+}
+
+.btn-primary:active:focus{
+    border: #3fa3af;
+    background-color: #3fa3af;
+}
+
+.btn-primary:hover{
+    border: #45abac;
+    background-color: #45abac;
+}

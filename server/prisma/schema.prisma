@@ -1,0 +1,200 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Auth {
+  email       String       @id @unique
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  password    String
+  UserProfile UserProfile?
+}
+
+model UserProfile {
+  id           Int           @id @default(autoincrement())
+  emailId      String        @unique
+  firstName    String
+  lastName     String
+  verified     Boolean       @default(false)
+  user         Auth          @relation(fields: [emailId], references: [email], onDelete: Cascade)
+  recipes      Recipe[]
+  reviews      Review[]
+  collections  Collection[]
+  shoppingList ShoppingList?
+  views        RecipeView[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Recipe {
+  id          Int                @id @default(autoincrement())
+  title       String
+  description String             @db.VarChar(1000)
+  chef        UserProfile        @relation(fields: [chefId], references: [id], onDelete: Cascade)
+  chefId      Int
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+  steps       RecipeStep[]
+  cuisine     Cuisine            @relation(fields: [cuisineId], references: [id], onDelete: Cascade)
+  cuisineId   Int
+  tags        RecipeTag[]
+  ingredients RecipeIngredient[]
+  allergen    Allergen[]
+  diet        Diet               @relation(fields: [dietId], references: [id], onDelete: Cascade)
+  dietId      Int
+  course      Course
+  images      Images[]
+  reviews     Review[]
+  collection  Collection[]
+  views       RecipeView[]
+}
+
+enum Course {
+  Appetizer
+  Main_Course
+  Dessert
+  Beverage
+  Salad
+  Soup
+  Breakfast
+  Bread
+  Side_Dish
+  Kid_Friendly
+}
+
+model RecipeStep {
+  stepNumber Int
+  recipeId   Int
+  step       String @db.VarChar(10000)
+  recipe     Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+
+  @@id([stepNumber, recipeId])
+}
+
+model Cuisine {
+  id     Int      @id @default(autoincrement())
+  name   String
+  recipe Recipe[]
+}
+
+model Tag {
+  id     Int         @id @default(autoincrement())
+  text   String
+  recipe RecipeTag[]
+}
+
+model RecipeTag {
+  recipeId Int
+  tagId    Int
+  tag      Tag    @relation(fields: [tagId], references: [id], onDelete: Cascade)
+  recipe   Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+
+  @@id([recipeId, tagId])
+}
+
+model Ingredient {
+  id                Int                @id @default(autoincrement())
+  name              String
+  servingSize       Float
+  servingSizeName   String
+  inGrams           Float
+  calories          Float
+  totalFat          Float
+  saturatedFat      Float
+  transFat          Float
+  cholesterol       Float
+  sodium            Float
+  totalCarbs        Float
+  sugar             Float
+  protein           Float
+  calcium           Float
+  iron              Float
+  potassium         Float
+  recipeIngredients RecipeIngredient[]
+  ShoppingList      ShoppingList[]
+  shoppingListId    Int?
+}
+
+model Unit {
+  id               Int                @id @default(autoincrement())
+  name             String
+  grams            Float
+  symbol           String
+  recipeIngredient RecipeIngredient[]
+}
+
+model RecipeIngredient {
+  recipeId     Int
+  ingredientId Int
+  unitId       Int
+  unit         Unit       @relation(fields: [unitId], references: [id])
+  quantity     Float
+  recipe       Recipe     @relation(fields: [recipeId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  ingredient   Ingredient @relation(fields: [ingredientId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@id([recipeId, ingredientId])
+}
+
+model Diet {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String   @db.VarChar(5000)
+  recipe      Recipe[]
+}
+
+model Allergen {
+  id     Int      @id @default(autoincrement())
+  name   String   @db.VarChar(5000)
+  recipe Recipe[]
+}
+
+model Images {
+  id       Int      @id @default(autoincrement())
+  url      String
+  recipeId Recipe[]
+}
+
+model Review {
+  id        Int         @id @default(autoincrement())
+  recipe    Recipe      @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  recipeId  Int
+  user      UserProfile @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    Int
+  rating    Int
+  review    String      @db.VarChar(5000)
+  createdAt DateTime    @default(now())
+}
+
+model Collection {
+  id      Int         @id @default(autoincrement())
+  name    String
+  user    UserProfile @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId  Int
+  recipes Recipe[]
+
+  @@unique([userId, name])
+}
+
+model ShoppingList {
+  id          Int          @id @default(autoincrement())
+  user        UserProfile  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      Int          @unique
+  ingredients Ingredient[]
+}
+
+model RecipeView {
+  id       Int         @id @default(autoincrement())
+  userId   Int
+  user     UserProfile @relation(fields: [userId], references: [id])
+  recipeId Int
+  recipe   Recipe      @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  viewedAt DateTime    @default(now())
+
+  @@unique([userId, recipeId, viewedAt])
+}

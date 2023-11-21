@@ -1,0 +1,23 @@
+.ratings {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+  
+.star {
+    font-size: 1.2rem;
+    margin-right: 3px;
+}
+  
+.average-rating {
+    margin-top: 5px;
+    font-size: 14px;
+    color: gray;
+}
+
+.empty {
+    color: gray;
+}
+.filled {
+    color: gold;
+}
