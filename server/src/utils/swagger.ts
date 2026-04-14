@@ -28,7 +28,7 @@ const spec =  swaggerJSDoc(options);
 export default (app: Application) => {
     app.use(
         '/api/docs',
-        swaggerUi.serve,
-        swaggerUi.setup(spec)
+        ...(swaggerUi.serve as any),
+        swaggerUi.setup(spec) as any
     );
 };

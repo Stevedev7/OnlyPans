@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>OnlyPans — Complete Mockups</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+
+/* ═══ TOOL BAR ═══════════════════════════════════════════════ */
+body{font-family:'Outfit',sans-serif;background:#111;color:#fff;min-height:100vh}
+#toolbar{position:sticky;top:0;z-index:999;background:rgba(15,15,15,0.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.08);padding:10px 20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+#toolbar h1{font-family:'Playfair Display',serif;font-size:16px;font-weight:500;color:#fff;margin-right:8px;white-space:nowrap}
+.tb-group{display:flex;gap:4px;background:rgba(255,255,255,0.06);border-radius:8px;padding:3px}
+.tb-btn{padding:5px 11px;border-radius:6px;border:none;background:transparent;color:rgba(255,255,255,0.5);font-size:12px;font-family:'Outfit',sans-serif;cursor:pointer;transition:all .15s;white-space:nowrap}
+.tb-btn:hover{color:#fff;background:rgba(255,255,255,0.1)}
+.tb-btn.active{background:#fff;color:#111;font-weight:600}
+.tb-sep{width:1px;height:20px;background:rgba(255,255,255,0.1);margin:0 4px}
+#page-nav{display:flex;gap:3px;overflow-x:auto;scrollbar-width:none}
+#page-nav::-webkit-scrollbar{display:none}
+.page-btn{padding:5px 12px;border-radius:6px;border:none;background:transparent;color:rgba(255,255,255,0.45);font-size:12px;font-family:'Outfit',sans-serif;cursor:pointer;transition:all .15s;white-space:nowrap;flex-shrink:0}
+.page-btn:hover{color:#fff;background:rgba(255,255,255,0.08)}
+.page-btn.active{color:#fff;font-weight:600;background:rgba(255,255,255,0.12)}
+
+/* ═══ FRAME WRAPPER ══════════════════════════════════════════ */
+#stage{display:flex;justify-content:center;align-items:flex-start;padding:24px 20px 40px;min-height:calc(100vh - 52px)}
+.frame-wrap{display:flex;flex-direction:column;align-items:center;gap:8px;transition:all .3s ease}
+.frame-label{font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:.06em;text-transform:uppercase}
+.device-shell{border-radius:14px;overflow:hidden;transition:width .3s ease, box-shadow .3s;box-shadow:0 0 0 1px rgba(255,255,255,0.1),0 24px 60px rgba(0,0,0,0.7)}
+.device-shell.desktop{width:1100px}
+.device-shell.tablet{width:768px}
+.device-shell.mobile{width:375px}
+
+/* ═══ LIGHT THEME TOKENS ════════════════════════════════════ */
+.light{
+  --bg:#F7F4F0;--surface:#FFFFFF;--surface2:#F2EFE9;--surface3:#E8E4DC;
+  --border:rgba(0,0,0,0.07);--border-md:rgba(0,0,0,0.13);
+  --text:#1A1714;--muted:#6B6560;--hint:#A8A39E;
+  --accent:#C8410E;--accent-l:#FAF0EB;--accent-m:#E8835A;--accent-d:#8B2C08;
+  --accent-hover:#E05020;
+  --teal:#0D7A5C;--teal-l:#E8F7F2;--teal-t:#0a5c44;
+  --amber:#B5720A;--amber-l:#FEF3DC;
+  --blue:#1A5FAB;--blue-l:#EBF3FC;
+  --purple:#5B4BA8;--purple-l:#F0EEFF;
+  --pink:#C24070;--pink-l:#FCEEF4;
+  --shadow:0 1px 3px rgba(0,0,0,0.06),0 4px 12px rgba(0,0,0,0.05);
+  --shadow-lg:0 4px 24px rgba(0,0,0,0.10);
+}
+/* ═══ DARK THEME TOKENS ═════════════════════════════════════ */
+.dark{
+  --bg:#0b090a;--surface:#161a1d;--surface2:#1e2327;--surface3:#252b30;
+  --border:rgba(255,255,255,0.07);--border-md:rgba(255,255,255,0.13);
+  --text:#f5f3f4;--muted:#b1a7a6;--hint:#6B5C5E;
+  --accent:#E5383B;--accent-l:#330707;--accent-m:#a4161a;--accent-d:#660708;
+  --accent-hover:#ea6062;
+  --teal:#0f6e56;--teal-l:#04342c;--teal-t:#9FE1CB;
+  --amber:#EF9F27;--amber-l:#412402;
+  --blue:#378ADD;--blue-l:#042C53;
+  --purple:#AFA9EC;--purple-l:#26215C;
+  --pink:#ED93B1;--pink-l:#4B1528;
+  --shadow:0 1px 3px rgba(0,0,0,0.4),0 4px 12px rgba(0,0,0,0.3);
+  --shadow-lg:0 8px 32px rgba(164,22,26,0.22),0 2px 8px rgba(0,0,0,0.5);
+}
+
+/* ═══ APP SHELL ══════════════════════════════════════════════ */
+.app{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-height:560px;display:flex;flex-direction:column}
+.topbar{background:var(--surface);border-bottom:0.5px solid var(--border);height:54px;display:flex;align-items:center;padding:0 20px;gap:12px;flex-shrink:0}
+.logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--accent);display:flex;align-items:center;gap:8px;text-decoration:none}
+.logo-mark{width:30px;height:30px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:14px;box-shadow:0 0 10px rgba(200,65,14,0.35)}
+.search{flex:1;max-width:300px;background:var(--surface2);border:0.5px solid var(--border);border-radius:20px;padding:7px 14px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--hint)}
+.hdr-actions{margin-left:auto;display:flex;align-items:center;gap:8px}
+.av{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600}
+.icon-btn{width:34px;height:34px;border-radius:50%;background:var(--surface2);border:0.5px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted)}
+
+/* ─── 3-col layout ─── */
+.layout3{display:grid;grid-template-columns:210px 1fr 190px;flex:1;min-height:0}
+.layout2{display:grid;grid-template-columns:200px 1fr;flex:1;min-height:0}
+.sidebar{background:var(--surface);border-right:0.5px solid var(--border);padding:16px 0;overflow-y:auto}
+.right-panel{background:var(--surface);border-left:0.5px solid var(--border);padding:16px}
+.main-area{background:var(--bg);overflow-y:auto}
+.content{padding:18px 20px}
+
+/* ─── Nav links ─── */
+.nav-sec{font-size:10px;font-weight:600;color:var(--hint);letter-spacing:.08em;padding:6px 18px 2px;text-transform:uppercase}
+.nav-lnk{display:flex;align-items:center;gap:10px;padding:9px 18px;font-size:13px;color:var(--muted);text-decoration:none;border-right:2px solid transparent;transition:all .12s}
+.nav-lnk:hover{background:var(--surface2);color:var(--text)}
+.nav-lnk.on{color:var(--accent);background:var(--accent-l);border-right-color:var(--accent);font-weight:500}
+.nav-lnk svg{width:15px;height:15px;flex-shrink:0}
+.nav-div{height:0.5px;background:var(--border);margin:10px 18px}
+.f-user{display:flex;align-items:center;gap:8px;padding:6px 18px}
+.f-av{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600}
+
+/* ─── Chips / filters ─── */
+.chips{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px}
+.chip{padding:5px 13px;border-radius:16px;font-size:12px;border:0.5px solid var(--border-md);color:var(--muted);background:var(--surface);cursor:pointer;white-space:nowrap}
+.chip.on{background:var(--accent-l);color:var(--accent-d);border-color:var(--accent-m);font-weight:500}
+
+/* ─── Recipe cards ─── */
+.r-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.r-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.r-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.r-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.rcard{background:var(--surface);border-radius:12px;border:0.5px solid var(--border);overflow:hidden;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.rcard:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.rthumb{height:140px;position:relative}
+.rbadge{position:absolute;bottom:8px;left:8px;background:rgba(0,0,0,0.42);color:#fff;font-size:10px;padding:2px 7px;border-radius:8px;backdrop-filter:blur(4px)}
+.rtime{position:absolute;top:8px;right:8px;background:rgba(0,0,0,0.42);color:#fff;font-size:10px;padding:2px 7px;border-radius:8px}
+.rbody{padding:11px}
+.rtitle{font-size:13px;font-weight:500;color:var(--text);margin-bottom:2px;line-height:1.3}
+.rsub{font-size:11px;color:var(--muted);margin-bottom:8px}
+.rfoot{display:flex;align-items:center;justify-content:space-between}
+.rav{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:600;margin-right:4px}
+.rauthor{display:flex;align-items:center;font-size:11px;color:var(--muted)}
+.rstats{display:flex;gap:7px;font-size:11px;color:var(--hint)}
+.rcard-wide{display:flex;overflow:hidden}
+.rcard-wide .rthumb{width:130px;min-height:100px;flex-shrink:0}
+
+/* ─── Gradients ─── */
+.g-red{background:linear-gradient(135deg,#b33010,#e8582a)}
+.g-teal{background:linear-gradient(135deg,#0a5c44,#14a87a)}
+.g-amber{background:linear-gradient(135deg,#7a4a08,#d4860e)}
+.g-purple{background:linear-gradient(135deg,#3b3280,#7b72d8)}
+.g-green{background:linear-gradient(135deg,#1a4010,#3d8020)}
+.g-pink{background:linear-gradient(135deg,#7a1840,#c84878)}
+.g-blue{background:linear-gradient(135deg,#082860,#1860b0)}
+.g-clay{background:linear-gradient(135deg,#6b3820,#c46838)}
+.dark .g-red{background:linear-gradient(135deg,#3c0405,#a4161a)}
+.dark .g-teal{background:linear-gradient(135deg,#04342c,#0f6e56)}
+.dark .g-amber{background:linear-gradient(135deg,#412402,#7a4710)}
+.dark .g-purple{background:linear-gradient(135deg,#1a1640,#3d3890)}
+.dark .g-green{background:linear-gradient(135deg,#1a2e08,#3d6015)}
+.dark .g-pink{background:linear-gradient(135deg,#2e0a1a,#7a2248)}
+.dark .g-blue{background:linear-gradient(135deg,#04203c,#0f3d6e)}
+.dark .g-clay{background:linear-gradient(135deg,#3a1800,#8a2e0d)}
+
+/* ─── Badges / pills ─── */
+.pill{display:inline-block;padding:3px 8px;border-radius:8px;font-size:10px;font-weight:500}
+.pill-red{background:var(--accent-l);color:var(--accent-d)}
+.pill-teal{background:var(--teal-l);color:var(--teal)}
+.dark .pill-teal{color:var(--teal-t)}
+.pill-amber{background:var(--amber-l);color:var(--amber)}
+.pill-blue{background:var(--blue-l);color:var(--blue)}
+.pill-purple{background:var(--purple-l);color:var(--purple)}
+
+/* ─── Right panel ─── */
+.rp-title{font-size:12px;font-weight:500;color:var(--text);margin-bottom:10px}
+.trend-item{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:0.5px solid var(--border);font-size:12px}
+.trend-num{font-size:10px;color:var(--hint);width:12px}
+.trend-tag{color:var(--blue)}
+.trend-ct{font-size:10px;color:var(--hint);margin-left:auto}
+.sugg-user{display:flex;align-items:center;gap:8px;padding:7px 0}
+.follow-btn{margin-left:auto;font-size:11px;padding:4px 10px;border-radius:10px;border:0.5px solid var(--accent-m);background:var(--accent-l);color:var(--accent-d);cursor:pointer}
+.dark .follow-btn{color:var(--accent-hover)}
+
+/* ─── Section header ─── */
+.sec-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.sec-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:500;color:var(--text)}
+.sec-link{font-size:12px;color:var(--accent);text-decoration:none}
+
+/* ─── Auth ─── */
+.auth-wrap{display:flex;min-height:520px}
+.auth-left{flex:1;padding:40px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
+.light .auth-left{background:linear-gradient(145deg,#FAF0EB 0%,#E07040 55%,#8B2C08 100%)}
+.dark .auth-left{background:linear-gradient(145deg,#0d0203 0%,#3c0405 45%,#660708 80%,#a4161a 100%)}
+.auth-left::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%,rgba(232,83,42,0.2) 0%,transparent 65%)}
+.auth-title{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:#fff;line-height:1.15;margin-bottom:8px;position:relative;z-index:1}
+.auth-sub{font-size:14px;color:rgba(255,255,255,0.75);position:relative;z-index:1}
+.auth-right{width:360px;padding:36px;background:var(--surface);display:flex;flex-direction:column;justify-content:center}
+.auth-tabs{display:flex;gap:4px;margin-bottom:24px}
+.auth-tab{flex:1;padding:8px;text-align:center;font-size:13px;border-radius:8px;cursor:pointer;color:var(--muted);border:0.5px solid transparent;font-family:'Outfit',sans-serif}
+.auth-tab.on{background:var(--accent-l);color:var(--accent-d);border-color:var(--accent-m);font-weight:500}
+.dark .auth-tab.on{color:var(--accent-hover)}
+.flabel{font-size:11px;font-weight:500;color:var(--muted);margin-bottom:4px;display:block}
+.finput{width:100%;padding:9px 12px;border:0.5px solid var(--border-md);border-radius:8px;font-size:13px;background:var(--surface2);color:var(--text);font-family:'Outfit',sans-serif;margin-bottom:12px;outline:none}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn-primary{width:100%;padding:11px;background:var(--accent-m);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Outfit',sans-serif}
+.auth-switch{text-align:center;font-size:12px;color:var(--muted);margin-top:14px}
+.auth-switch span{color:var(--accent);cursor:pointer}
+
+/* ─── Home hero ─── */
+.hero{padding:48px 36px;display:flex;align-items:center;gap:36px;position:relative;overflow:hidden}
+.light .hero{background:linear-gradient(155deg,#FAF0EB 0%,#E8835A 50%,#C8410E 100%)}
+.dark .hero{background:linear-gradient(155deg,#0d0203 0%,#3c0405 45%,#660708 80%,#a4161a 100%)}
+.hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 75% 50%,rgba(232,83,42,0.18) 0%,transparent 60%);pointer-events:none}
+.hero-text{flex:1;position:relative;z-index:1}
+.hero-title{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:#fff;line-height:1.1;margin-bottom:8px}
+.hero-sub{font-size:14px;color:rgba(255,255,255,0.82);margin-bottom:18px}
+.hero-search{display:flex;gap:8px;max-width:440px}
+.hero-input{flex:1;padding:11px 16px;border-radius:22px;border:0.5px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.12);color:#fff;font-size:13px;font-family:'Outfit',sans-serif;backdrop-filter:blur(8px)}
+.hero-input::placeholder{color:rgba(255,255,255,0.55)}
+.hero-btn{padding:11px 20px;border-radius:22px;background:var(--accent-m);color:#fff;border:none;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap}
+
+/* ─── Category grid ─── */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:24px}
+.cat-card{border-radius:12px;overflow:hidden;cursor:pointer;height:90px;display:flex;align-items:flex-end;padding:10px;border:0.5px solid rgba(255,255,255,0.08)}
+.cat-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.cat-label{font-family:'Playfair Display',serif;font-size:13px;font-weight:500;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,0.4)}
+
+/* ─── Recipe detail ─── */
+.rd-hero{position:relative;height:220px;overflow:hidden}
+.rd-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.72) 0%,rgba(0,0,0,0.1) 55%);padding:16px;display:flex;flex-direction:column;justify-content:flex-end}
+.rd-hero-title{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:#fff;margin-bottom:3px}
+.rd-hero-sub{font-size:12px;color:rgba(255,255,255,.78)}
+.rd-hero-acts{position:absolute;top:12px;right:12px;display:flex;gap:6px}
+.hib{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.18);border:0.5px solid rgba(255,255,255,.35);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px)}
+.meta-strip{background:var(--surface);border-bottom:0.5px solid var(--border);padding:11px 18px;display:flex;gap:20px}
+.meta-cell{text-align:center}
+.meta-val{font-size:15px;font-weight:600;color:var(--text)}
+.meta-lbl{font-size:10px;color:var(--muted)}
+.rd-body{display:grid;grid-template-columns:1fr 280px}
+.rd-main{padding:18px;background:var(--surface)}
+.rd-side{background:var(--bg);border-left:0.5px solid var(--border);padding:16px;display:flex;flex-direction:column;gap:16px}
+.step-row{display:flex;gap:10px;margin-bottom:12px;align-items:flex-start}
+.step-n{width:22px;height:22px;border-radius:50%;background:var(--accent-l);color:var(--accent-d);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;flex-shrink:0;margin-top:1px}
+.dark .step-n{color:var(--accent-hover)}
+.step-t{font-size:12px;color:var(--muted);line-height:1.65}
+.ingr-row{display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:0.5px solid var(--border)}
+.ingr-add{width:20px;height:20px;border-radius:50%;border:0.5px solid var(--border-md);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--muted);margin-right:8px;cursor:pointer}
+.ingr-name{font-size:12px;color:var(--text)}
+.ingr-amt{font-size:11px;color:var(--muted)}
+.adj-row{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.adj-ctrl{display:flex;border:0.5px solid var(--border-md);border-radius:6px;overflow:hidden;background:var(--surface2)}
+.adj-btn{padding:4px 9px;font-size:12px;border:none;background:transparent;color:var(--muted);cursor:pointer}
+.adj-val{padding:4px 10px;font-size:12px;font-weight:600;color:var(--text);border-left:0.5px solid var(--border-md);border-right:0.5px solid var(--border-md)}
+.chef-card{background:var(--surface2);border:0.5px solid var(--border);border-radius:10px;padding:11px;display:flex;align-items:center;gap:10px}
+.nutr-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.nutr-cell{background:var(--surface2);border:0.5px solid var(--border);border-radius:8px;padding:9px;text-align:center}
+.nutr-val{font-size:14px;font-weight:600;color:var(--text)}
+.nutr-lbl{font-size:10px;color:var(--muted)}
+.rev-card{background:var(--surface2);border:0.5px solid var(--border);border-radius:8px;padding:11px;margin-bottom:8px}
+.rev-hdr{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.rev-av{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600}
+.rev-name{font-size:12px;font-weight:500;color:var(--text)}
+.rev-stars{font-size:10px;color:var(--amber);margin-left:auto}
+.rev-date{font-size:10px;color:var(--hint)}
+.rev-text{font-size:12px;color:var(--muted);line-height:1.5}
+.add-rev{background:var(--surface2);border-radius:10px;border:0.5px solid var(--border);padding:12px;margin-top:12px}
+.star-row{font-size:18px;color:var(--hint);margin-bottom:8px}
+.fta{width:100%;padding:8px 10px;border:0.5px solid var(--border-md);border-radius:8px;font-size:12px;background:var(--surface);color:var(--text);resize:none;font-family:'Outfit',sans-serif;height:56px}
+.btn-sm{padding:7px 16px;background:var(--accent-m);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;margin-top:8px}
+.div{height:0.5px;background:var(--border);margin:12px 0}
+
+/* ─── Discover ─── */
+.disc-layout{display:grid;grid-template-columns:200px 1fr;flex:1}
+.filter-bar{background:var(--surface);border-right:0.5px solid var(--border);padding:16px;overflow-y:auto}
+.fs-title{font-size:10px;font-weight:600;color:var(--hint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px}
+.fopt{display:flex;align-items:center;justify-content:space-between;padding:6px 8px;border-radius:7px;font-size:12px;color:var(--muted);cursor:pointer;margin-bottom:1px}
+.fopt:hover{background:var(--surface2);color:var(--text)}
+.fopt.on{background:var(--accent-l);color:var(--accent-d);font-weight:500}
+.dark .fopt.on{color:var(--accent-hover)}
+.fct{font-size:10px;color:var(--hint)}
+.fopt.on .fct{color:var(--accent)}
+.disc-main{background:var(--bg);padding:16px;overflow-y:auto}
+.toolbar-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.res-ct{font-size:12px;color:var(--muted)}
+.sort-sel{font-size:12px;padding:5px 10px;border:0.5px solid var(--border-md);border-radius:7px;background:var(--surface);color:var(--text);font-family:'Outfit',sans-serif}
+.act-pills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;align-items:center}
+.act-pill{display:flex;align-items:center;gap:4px;padding:4px 9px;border-radius:10px;font-size:11px;background:var(--accent-l);color:var(--accent-d);border:0.5px solid var(--accent-m)}
+.dark .act-pill{color:var(--accent-hover)}
+.clr-all{font-size:11px;color:var(--muted);margin-left:auto;cursor:pointer}
+.pgn{display:flex;justify-content:center;align-items:center;gap:5px;margin-top:14px}
+.pbn{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;border:0.5px solid var(--border-md);color:var(--muted);cursor:pointer;background:var(--surface)}
+.pbn.on{background:var(--accent-l);color:var(--accent-d);border-color:var(--accent-m);font-weight:600}
+.dark .pbn.on{color:var(--accent-hover)}
+
+/* ─── Profile ─── */
+.prof-hdr{background:var(--surface);border-bottom:0.5px solid var(--border);padding:24px 20px;display:flex;align-items:flex-end;gap:18px}
+.prof-av{width:68px;height:68px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;border:3px solid var(--surface);box-shadow:0 0 0 2px var(--border);flex-shrink:0}
+.prof-name{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--text)}
+.prof-email{font-size:12px;color:var(--muted);margin-bottom:8px}
+.prof-stats{display:flex;gap:18px}
+.ps-val{font-size:14px;font-weight:600;color:var(--text)}
+.ps-lbl{font-size:10px;color:var(--muted)}
+.prof-acts{margin-left:auto;display:flex;gap:8px;align-self:center}
+.btn-outline{padding:7px 16px;border:0.5px solid var(--border-md);border-radius:8px;font-size:12px;color:var(--muted);background:var(--surface2);cursor:pointer;font-family:'Outfit',sans-serif}
+.btn-accent{padding:7px 16px;border:none;border-radius:8px;font-size:12px;background:var(--accent-m);color:#fff;cursor:pointer;font-weight:600;font-family:'Outfit',sans-serif}
+.prof-tabs{background:var(--surface);border-bottom:0.5px solid var(--border);display:flex}
+.ptab{flex:1;text-align:center;padding:10px;font-size:12px;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent}
+.ptab.on{color:var(--accent);border-bottom-color:var(--accent-m);font-weight:500}
+.dark .ptab.on{color:var(--accent-hover)}
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.photo-cell{aspect-ratio:1;cursor:pointer;overflow:hidden;transition:opacity .15s}
+.photo-cell:hover{opacity:.8}
+
+/* ─── Collections ─── */
+.coll-body{padding:16px;background:var(--bg)}
+.new-coll-btn{display:flex;align-items:center;gap:8px;padding:13px 14px;border:1px dashed var(--border-md);border-radius:12px;font-size:12px;color:var(--muted);margin-bottom:12px;cursor:pointer;background:transparent;width:100%;text-align:left;font-family:'Outfit',sans-serif}
+.new-coll-btn:hover{border-color:var(--accent-m);color:var(--accent-d)}
+.coll-card{background:var(--surface);border:0.5px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:10px;cursor:pointer;transition:box-shadow .15s}
+.coll-card:hover{box-shadow:var(--shadow-lg)}
+.coll-prev{display:grid;grid-template-columns:1fr 1fr;height:82px}
+.coll-info{padding:11px 14px;display:flex;align-items:center;justify-content:space-between}
+.coll-name{font-size:13px;font-weight:500;color:var(--text)}
+.coll-ct{font-size:11px;color:var(--muted);margin-top:2px}
+.plus-cell{background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--hint)}
+
+/* ─── Shopping list ─── */
+.sl-hdr{background:var(--surface);border-bottom:0.5px solid var(--border);padding:16px 18px;display:flex;align-items:center;justify-content:space-between}
+.sl-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--text)}
+.sl-sum{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:14px 18px;background:var(--surface);border-bottom:0.5px solid var(--border)}
+.sum-cell{background:var(--surface2);border-radius:8px;padding:10px;text-align:center}
+.sum-val{font-size:16px;font-weight:600;color:var(--text)}
+.sum-lbl{font-size:10px;color:var(--muted)}
+.sl-body{padding:14px 18px;background:var(--surface)}
+.sl-sec{font-size:10px;font-weight:600;color:var(--hint);text-transform:uppercase;letter-spacing:.07em;margin:8px 0 4px}
+.sl-item{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:0.5px solid var(--border)}
+.cb{width:17px;height:17px;border-radius:4px;border:0.5px solid var(--border-md);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cb.done{background:#0f6e56;border-color:#0f6e56}
+.sl-name{flex:1;font-size:13px;color:var(--text)}
+.sl-name.x{text-decoration:line-through;color:var(--hint)}
+.sl-amt{font-size:11px;color:var(--muted);min-width:48px;text-align:right}
+.sl-del{color:var(--hint);font-size:15px;padding:0 3px;cursor:pointer}
+.sl-add{display:flex;gap:8px;margin-top:14px}
+.sl-inp{flex:1;padding:9px 11px;border:0.5px solid var(--border-md);border-radius:8px;font-size:12px;background:var(--surface2);color:var(--text);font-family:'Outfit',sans-serif}
+.sl-addbtn{padding:9px 16px;background:var(--accent-m);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap}
+
+/* ─── Favorites ─── */
+.fav-hdr{background:var(--surface);border-bottom:0.5px solid var(--border);padding:16px 18px;display:flex;align-items:center;justify-content:space-between}
+.fav-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--text)}
+.heart{position:absolute;top:7px;right:7px;color:#fff;font-size:13px}
+
+/* ─── Add recipe ─── */
+.form-wrap{background:var(--bg);padding:20px;display:grid;grid-template-columns:1fr 300px;gap:18px}
+.fsec{background:var(--surface2);border:0.5px solid var(--border);border-radius:12px;padding:15px;margin-bottom:14px}
+.fsec-title{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px}
+.finp{width:100%;padding:9px 11px;border:0.5px solid var(--border-md);border-radius:8px;font-size:13px;background:var(--surface);color:var(--text);font-family:'Outfit',sans-serif;margin-bottom:10px;outline:none}
+.fta2{width:100%;padding:9px 11px;border:0.5px solid var(--border-md);border-radius:8px;font-size:13px;background:var(--surface);color:var(--text);font-family:'Outfit',sans-serif;resize:none;height:72px;margin-bottom:10px}
+.fsel{width:100%;padding:9px 11px;border:0.5px solid var(--border-md);border-radius:8px;font-size:13px;background:var(--surface);color:var(--text);font-family:'Outfit',sans-serif}
+.f3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ing-item{display:flex;align-items:center;justify-content:space-between;padding:8px 11px;background:var(--surface);border:0.5px solid var(--border);border-radius:8px;margin-bottom:6px;font-size:12px}
+.ing-del{color:var(--hint);cursor:pointer;font-size:13px}
+.step-item{display:flex;align-items:flex-start;gap:9px;margin-bottom:9px}
+.step-handle{width:22px;height:22px;border-radius:50%;background:var(--accent-l);color:var(--accent-d);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;flex-shrink:0;margin-top:7px}
+.dark .step-handle{color:var(--accent-hover)}
+.step-inp{flex:1;padding:8px 11px;border:0.5px solid var(--border-md);border-radius:8px;font-size:12px;background:var(--surface);color:var(--text);font-family:'Outfit',sans-serif}
+.add-step{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--accent);cursor:pointer;border:none;background:none;font-family:'Outfit',sans-serif;padding:4px 0}
+.tag-row{display:flex;flex-wrap:wrap;gap:5px}
+.tag-opt{padding:4px 11px;border-radius:10px;font-size:11px;border:0.5px solid var(--border-md);color:var(--muted);cursor:pointer}
+.tag-opt.on{background:var(--accent-l);color:var(--accent-d);border-color:var(--accent-m)}
+.dark .tag-opt.on{color:var(--accent-hover)}
+.upload-z{border:1px dashed var(--border-md);border-radius:12px;padding:24px;text-align:center;background:var(--surface2);cursor:pointer;margin-bottom:14px}
+.upload-ico{color:var(--hint);margin:0 auto 8px}
+.upload-txt{font-size:12px;color:var(--muted)}
+.upload-txt span{color:var(--accent)}
+.form-btns{display:flex;gap:8px;justify-content:flex-end;margin-top:16px}
+.btn-cancel{padding:9px 18px;background:transparent;border:0.5px solid var(--border-md);border-radius:8px;font-size:12px;color:var(--muted);cursor:pointer;font-family:'Outfit',sans-serif}
+.btn-save{padding:9px 24px;background:var(--accent-m);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Outfit',sans-serif}
+.ing-row4{display:grid;grid-template-columns:1fr 70px 100px 30px;gap:7px;align-items:end}
+
+/* ─── Mobile bottom nav ─── */
+.mobile-nav{background:var(--surface);border-top:0.5px solid var(--border);display:flex;justify-content:space-around;padding:9px 0 13px;flex-shrink:0}
+.mnav-item{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--hint);text-decoration:none;font-size:10px}
+.mnav-item.on{color:var(--accent-hover)}
+.light .mnav-item.on{color:var(--accent)}
+.mhdr{background:var(--surface);border-bottom:0.5px solid var(--border);padding:13px 16px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.mhdr-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--text)}
+
+/* svgs */
+svg{display:block}
+</style>
+</head>
+<body>
+
+<div id="toolbar">
+  <h1>🍳 OnlyPans</h1>
+  <div class="tb-sep"></div>
+  <div class="tb-group" id="theme-group">
+    <button class="tb-btn active" onclick="setTheme('light',this)">☀ Light</button>
+    <button class="tb-btn" onclick="setTheme('dark',this)">🌙 Dark</button>
+  </div>
+  <div class="tb-sep"></div>
+  <div class="tb-group" id="vp-group">
+    <button class="tb-btn active" onclick="setVP('desktop',this)">Desktop</button>
+    <button class="tb-btn" onclick="setVP('tablet',this)">Tablet</button>
+    <button class="tb-btn" onclick="setVP('mobile',this)">Mobile</button>
+  </div>
+  <div class="tb-sep"></div>
+  <div id="page-nav">
+    <button class="page-btn active" onclick="setPage('home',this)">Home</button>
+    <button class="page-btn" onclick="setPage('login',this)">Login</button>
+    <button class="page-btn" onclick="setPage('register',this)">Register</button>
+    <button class="page-btn" onclick="setPage('discover',this)">Discover</button>
+    <button class="page-btn" onclick="setPage('recipe',this)">Recipe Detail</button>
+    <button class="page-btn" onclick="setPage('profile',this)">My Profile</button>
+    <button class="page-btn" onclick="setPage('chef',this)">Chef Profile</button>
+    <button class="page-btn" onclick="setPage('add',this)">Add Recipe</button>
+    <button class="page-btn" onclick="setPage('collections',this)">Collections</button>
+    <button class="page-btn" onclick="setPage('shopping',this)">Shopping List</button>
+    <button class="page-btn" onclick="setPage('favorites',this)">Favourites</button>
+  </div>
+</div>
+
+<div id="stage">
+  <div class="frame-wrap">
+    <div class="device-shell desktop light" id="device"></div>
+    <div class="frame-label" id="frame-label">Desktop · Light</div>
+  </div>
+</div>
+
+<script>
+let curTheme = 'light', curVP = 'desktop', curPage = 'home';
+
+/* ── SVG helpers ─────────────────────────── */
+const svg = (d,s=16) => `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">${d}</svg>`;
+const ICONS = {
+  home: svg('<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>'),
+  search: svg('<circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>'),
+  heart: svg('<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>'),
+  list: svg('<path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2"/>'),
+  user: svg('<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>'),
+  plus: svg('<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/>'),
+  folder: svg('<path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>'),
+  bell: svg('<path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"/>'),
+  share: svg('<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>'),
+  more: svg('<circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/>'),
+  back: svg('<path d="M19 12H5M12 5l-7 7 7 7"/>'),
+  edit: svg('<path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>'),
+  img: svg('<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>'),
+  check: svg('<polyline points="20 6 9 17 4 12"/>',12),
+  trash: svg('<polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>'),
+  settings: svg('<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>'),
+};
+
+/* ── Color helpers ─────────────────────── */
+const avColors = [
+  ['background:#042C53;color:#9DCDF5','background:#04342c;color:#9FE1CB',
+   'background:#26215C;color:#AFA9EC','background:#4B1528;color:#ED93B1','background:#412402;color:#EF9F27'],
+  ['background:#E6F1FB;color:#1A5FAB','background:#E8F7F2;color:#0D7A5C',
+   'background:#F0EEFF;color:#5B4BA8','background:#FCEEF4;color:#C24070','background:#FEF3DC;color:#B5720A']
+];
+const avC = (i) => avColors[curTheme==='dark'?0:1][i%5];
+
+/* ── Shared topbar ─────────────────────── */
+const topbar = (activeNav='') => {
+  const isMobile = curVP === 'mobile';
+  if(isMobile) return '';
+  return `<div class="topbar">
+    <div class="logo"><div class="logo-mark">🍳</div>OnlyPans</div>
+    <div class="search">${ICONS.search}<span>Search recipes, chefs…</span></div>
+    <div class="hdr-actions">
+      <div class="icon-btn">${ICONS.bell}</div>
+      <div class="av" style="${avC(0)}">AS</div>
+    </div>
+  </div>`;
+};
+
+/* ── Mobile header ─────────────────────── */
+const mhdr = (title, right='') => `<div class="mhdr"><span class="mhdr-title">${title}</span>${right}</div>`;
+
+/* ── Mobile bottom nav ─────────────────── */
+const mbnav = (active='home') => `
+  <div class="mobile-nav">
+    <a class="mnav-item ${active==='home'?'on':''}">${ICONS.home}<span>Home</span></a>
+    <a class="mnav-item ${active==='discover'?'on':''}">${ICONS.search}<span>Discover</span></a>
+    <a class="mnav-item ${active==='add'?'on':''}">${ICONS.plus}<span>Add</span></a>
+    <a class="mnav-item ${active==='favorites'?'on':''}">${ICONS.heart}<span>Saved</span></a>
+    <a class="mnav-item ${active==='profile'?'on':''}">${ICONS.user}<span>Profile</span></a>
+  </div>`;
+
+/* ── Sidebar ───────────────────────────── */
+const sidebar = (active='home') => {
+  const links = [
+    ['home','Home',ICONS.home],['discover','Discover',ICONS.search],
+    ['favorites','Favourites',ICONS.heart],['collections','Collections',ICONS.folder],
+    ['shopping','Shopping List',ICONS.list],['profile','My Profile',ICONS.user],
+  ];
+  const fUsers = [['JK',0,'Julia K.'],['MR',1,'Marco R.'],['SP',3,'Sana P.']];
+  return `<div class="sidebar">
+    <div class="nav-sec">Menu</div>
+    ${links.map(([id,label,ico])=>`<a class="nav-lnk ${active===id?'on':''}">${ico}${label}</a>`).join('')}
+    <div class="nav-div"></div>
+    <div class="nav-sec">Following</div>
+    ${fUsers.map(([i,c,n])=>`<div class="f-user"><div class="f-av" style="${avC(c)}">${i}</div><span style="font-size:12px;color:var(--muted)">${n}</span></div>`).join('')}
+  </div>`;
+};
+
+/* ── Right panel ───────────────────────── */
+const rightPanel = () => `<div class="right-panel">
+  <div class="rp-title">Trending tags</div>
+  ${[['#HighProtein','2.1k'],['#30MinMeals','1.4k'],['#MealPrep','987'],['#Vegetarian','804'],['#AsianFusion','612']].map(([t,c],i)=>`<div class="trend-item"><span class="trend-num">${i+1}</span><span class="trend-tag">${t}</span><span class="trend-ct">${c}</span></div>`).join('')}
+  <div class="div"></div>
+  <div class="rp-title">Suggested chefs</div>
+  ${[['TH',4,'Tom H.','1.2k recipes'],['AL',3,'Ana L.','876 recipes']].map(([i,c,n,r])=>`<div class="sugg-user"><div class="f-av" style="${avC(c)};width:30px;height:30px;font-size:11px">${i}</div><div><div style="font-size:12px;font-weight:500;color:var(--text)">${n}</div><div style="font-size:10px;color:var(--muted)">${r}</div></div><button class="follow-btn">Follow</button></div>`).join('')}
+</div>`;
+
+/* ── Recipe card ───────────────────────── */
+const rcard = (title,sub,g,time,course,author,av,avC_,stats,heart=false) => `
+<div class="rcard">
+  <div class="rthumb ${g}" style="position:relative">
+    ${heart?`<span class="heart">♥</span>`:''}
+    <span class="rtime">${time}</span>
+    <span class="rbadge">${course}</span>
+  </div>
+  <div class="rbody">
+    <div class="rtitle">${title}</div>
+    <div class="rsub">${sub}</div>
+    <div class="rfoot">
+      <div class="rauthor"><div class="rav" style="${avC_}">${av}</div>${author}</div>
+      <div class="rstats">${stats}</div>
+    </div>
+  </div>
+</div>`;
+
+const rcard_wide = (title,sub,g,time,heart=false) => `
+<div class="rcard rcard-wide">
+  <div class="rthumb ${g}" style="position:relative;width:130px;min-height:100px;flex-shrink:0">
+    ${heart?`<span class="heart">♥</span>`:''}
+    <span class="rtime" style="top:7px;right:7px">${time}</span>
+  </div>
+  <div class="rbody" style="flex:1">
+    <div class="rtitle">${title}</div>
+    <div class="rsub">${sub}</div>
+  </div>
+</div>`;
+
+/* ═══════════════════════════════════════════════════════════
+   PAGES
+═══════════════════════════════════════════════════════════ */
+
+/* ── HOME ─── */
+const pageHome = () => {
+  const isMobile = curVP==='mobile', isTablet = curVP==='tablet';
+  const grid = isMobile ? '' : isTablet ? 'layout2' : 'layout3';
+
+  const cards = `
+    ${rcard('Miso Glazed Salmon','Japanese · Dinner','g-red','45 min','Dinner','Julia K.',
+      'JK',avC(0),'♥ 214 · 💬 18')}
+    ${rcard('Shakshuka with Feta','Mediterranean · Breakfast','g-teal','20 min','Breakfast','Marco R.',
+      'MR',avC(1),'♥ 89 · 💬 7')}
+    ${rcard('Paneer Tikka Masala','Indian · Main Course','g-amber','35 min','Main','Sana P.',
+      'SP',avC(3),'♥ 301 · 💬 24')}
+    ${!isMobile?rcard('Matcha Lava Cake','Japanese-inspired Dessert','g-purple','50 min','Dessert','Tom H.',
+      'TH',avC(4),'♥ 178 · 💬 12'):''}`;
+
+  if(isMobile) return `
+    <div class="app ${curTheme}">
+      ${mhdr('🍳 OnlyPans',`<div class="icon-btn">${ICONS.search}</div>`)}
+      <div style="padding:12px 14px;background:var(--surface);border-bottom:0.5px solid var(--border)">
+        <div class="chips" style="flex-wrap:nowrap;overflow-x:auto">
+          <div class="chip on">All</div><div class="chip">Breakfast</div>
+          <div class="chip">Dinner</div><div class="chip">Veg</div><div class="chip">Quick</div>
+        </div>
+      </div>
+      <div style="padding:12px 14px;flex:1;overflow-y:auto">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          ${rcard_wide('Miso Glazed Salmon','Japanese · 45 min','g-red','45 min')}
+          ${rcard_wide('Shakshuka with Feta','Mediterranean · 20 min','g-teal','20 min')}
+          ${rcard_wide('Paneer Tikka Masala','Indian · 35 min','g-amber','35 min')}
+        </div>
+      </div>
+      ${mbnav('home')}
+    </div>`;
+
+  const mainContent = `
+    <div class="main-area">
+      <div class="content">
+        <div class="chips">
+          <div class="chip on">All</div><div class="chip">Breakfast</div>
+          <div class="chip">Dinner</div><div class="chip">Vegetarian</div>
+          <div class="chip">Quick &lt;30m</div><div class="chip">High Protein</div>
+        </div>
+        <div class="${isTablet?'r-grid-2':'r-grid'}">${cards}</div>
+        ${!isTablet?`<div class="div"></div>
+        <div class="sec-hdr"><span class="sec-title">From people you follow</span><a class="sec-link">See all</a></div>
+        ${rcard_wide('Spinach & Ricotta Cannelloni','Vegetarian · Italian · 60 min · Julia K.','g-green','60 min')}
+        `:''}
+      </div>
+    </div>`;
+
+  return `<div class="app ${curTheme}">
+    ${topbar()}
+    <div class="${grid}" style="flex:1;overflow:hidden">
+      ${sidebar('home')}
+      ${mainContent}
+      ${!isTablet?rightPanel():''}
+    </div>
+  </div>`;
+};
+
+/* ── LOGIN ─── */
+const pageLogin = () => {
+  const isMobile = curVP==='mobile';
+  if(isMobile) return `
+    <div class="app ${curTheme}">
+      <div style="height:170px;position:relative;overflow:hidden" class="${curTheme==='dark'?'':''}">
+        <div style="position:absolute;inset:0;${curTheme==='dark'?'background:linear-gradient(145deg,#0d0203,#3c0405,#660708)':'background:linear-gradient(145deg,#FAF0EB,#E07040,#8B2C08)'}"></div>
+        <div style="position:absolute;inset:0;padding:28px 20px;display:flex;flex-direction:column;justify-content:flex-end;z-index:1">
+          <div class="auth-title" style="font-size:26px">Welcome back 👋</div>
+          <div class="auth-sub">Sign in to your account</div>
+        </div>
+      </div>
+      <div style="padding:24px;background:var(--surface);flex:1">
+        <div class="auth-tabs">
+          <div class="auth-tab on">Login</div><div class="auth-tab">Register</div>
+        </div>
+        <label class="flabel">Email</label><input class="finput" placeholder="you@example.com" type="email"/>
+        <label class="flabel">Password</label><input class="finput" placeholder="••••••••" type="password"/>
+        <button class="btn-primary">Sign in</button>
+        <div class="auth-switch">Don't have an account? <span>Register</span></div>
+      </div>
+    </div>`;
+
+  return `<div class="app ${curTheme}">
+    <div class="auth-wrap">
+      <div class="auth-left">
+        <div class="auth-title">Cook. Share.<br/>Inspire.</div>
+        <div class="auth-sub">Join thousands of home chefs sharing recipes they love.</div>
+      </div>
+      <div class="auth-right">
+        <div class="logo" style="margin-bottom:24px"><div class="logo-mark">🍳</div>OnlyPans</div>
+        <div class="auth-tabs">
+          <div class="auth-tab on">Login</div><div class="auth-tab">Register</div>
+        </div>
+        <label class="flabel">Email address</label><input class="finput" placeholder="you@example.com" type="email"/>
+        <label class="flabel">Password</label><input class="finput" placeholder="••••••••" type="password"/>
+        <button class="btn-primary">Sign in</button>
+        <div class="auth-switch">Don't have an account? <span>Register</span></div>
+      </div>
+    </div>
+  </div>`;
+};
+
+/* ── REGISTER ─── */
+const pageRegister = () => {
+  const isMobile = curVP==='mobile';
+  if(isMobile) return `
+    <div class="app ${curTheme}">
+      <div style="height:140px;position:relative;overflow:hidden">
+        <div style="position:absolute;inset:0;${curTheme==='dark'?'background:linear-gradient(145deg,#0d0203,#3c0405,#660708)':'background:linear-gradient(145deg,#FAF0EB,#E07040,#8B2C08)'}"></div>
+        <div style="position:absolute;inset:0;padding:20px;display:flex;flex-direction:column;justify-content:flex-end;z-index:1">
+          <div class="auth-title" style="font-size:22px">Create account</div>
+        </div>
+      </div>
+      <div style="padding:20px;background:var(--surface);flex:1;overflow-y:auto">
+        <div class="auth-tabs"><div class="auth-tab">Login</div><div class="auth-tab on">Register</div></div>
+        <div class="f2"><div><label class="flabel">First name</label><input class="finput" placeholder="Alex"/></div>
+        <div><label class="flabel">Last name</label><input class="finput" placeholder="Smith"/></div></div>
+        <label class="flabel">Email</label><input class="finput" placeholder="you@example.com"/>
+        <label class="flabel">Password</label><input class="finput" placeholder="••••••••" type="password"/>
+        <label class="flabel">Confirm password</label><input class="finput" placeholder="••••••••" type="password"/>
+        <button class="btn-primary">Create account</button>
+      </div>
+    </div>`;
+
+  return `<div class="app ${curTheme}">
+    <div class="auth-wrap">
+      <div class="auth-left">
+        <div class="auth-title">Your kitchen,<br/>your rules.</div>
+        <div class="auth-sub">Build your collection and discover new flavours every day.</div>
+      </div>
+      <div class="auth-right">
+        <div class="logo" style="margin-bottom:24px"><div class="logo-mark">🍳</div>OnlyPans</div>
+        <div class="auth-tabs"><div class="auth-tab">Login</div><div class="auth-tab on">Register</div></div>
+        <div class="frow">
+          <div><label class="flabel">First name</label><input class="finput" placeholder="Alex"/></div>
+          <div><label class="flabel">Last name</label><input class="finput" placeholder="Smith"/></div>
+        </div>
+        <label class="flabel">Email address</label><input class="finput" placeholder="you@example.com"/>
+        <div class="frow">
+          <div><label class="flabel">Password</label><input class="finput" placeholder="••••••••" type="password"/></div>
+          <div><label class="flabel">Confirm password</label><input class="finput" placeholder="••••••••" type="password"/></div>
+        </div>
+        <button class="btn-primary">Create account</button>
+        <div class="auth-switch">Already have an account? <span>Login</span></div>
+      </div>
+    </div>
+  </div>`;
+};
+
+/* ── DISCOVER ─── */
+const pageDiscover = () => {
+  const isMobile = curVP==='mobile', isTablet = curVP==='tablet';
+  const filterBar = `
+    <div class="filter-bar">
+      <div class="fs-title">Course</div>
+      ${[['Breakfast',142,true],['Main Course',380],['Dessert',204],['Appetizer',97],['Soup',64],['Salad',55],['Side Dish',88],['Beverage',31]].map(([n,c,a])=>`<div class="fopt${a?' on':''}">${n}<span class="fct">${c}</span></div>`).join('')}
+      <div class="div"></div>
+      <div class="fs-title">Diet</div>
+      ${[['Vegetarian',211,true],['Vegan',134],['Gluten-free',98],['Keto',72],['Dairy-free',60]].map(([n,c,a])=>`<div class="fopt${a?' on':''}">${n}<span class="fct">${c}</span></div>`).join('')}
+      <div class="div"></div>
+      <div class="fs-title">Cuisine</div>
+      ${[['Italian',89],['Japanese',74],['Indian',66],['Mexican',53],['Thai',41]].map(([n,c])=>`<div class="fopt">${n}<span class="fct">${c}</span></div>`).join('')}
+    </div>`;
+
+  const results = `
+    <div class="disc-main">
+      <div class="toolbar-row">
+        <span class="res-ct">142 recipes found</span>
+        <select class="sort-sel"><option>Most popular</option><option>Newest</option><option>Quickest</option></select>
+      </div>
+      <div class="act-pills">
+        <div class="act-pill">Breakfast ×</div>
+        <div class="act-pill">Vegetarian ×</div>
+        <span class="clr-all">Clear all</span>
+      </div>
+      <div class="${isMobile?'':'r-grid-3'}" style="${isMobile?'display:flex;flex-direction:column;gap:10px':''}">
+        ${isMobile?[
+          rcard_wide('Avocado Egg Toast','Vegan · 20 min · ★ 4.8','g-teal','20 min'),
+          rcard_wide('Shakshuka Verde','Vegetarian · 45 min · ★ 4.9','g-red','45 min'),
+          rcard_wide('Berry Smoothie Bowl','Vegan · 15 min · ★ 4.7','g-purple','15 min'),
+        ].join('') : [
+          rcard('Avocado Egg Toast','Vegan · Gluten-free option','g-teal','20 min','Breakfast','Julia K.','JK',avC(0),'★ 4.8'),
+          rcard('Masala Omelette','Indian-spiced, high protein','g-amber','35 min','Breakfast','Marco R.','MR',avC(1),'★ 4.6'),
+          rcard('Berry Smoothie Bowl','Vegan · No added sugar','g-purple','15 min','Breakfast','Sana P.','SP',avC(3),'★ 4.7'),
+          rcard('Shakshuka Verde','Vegetarian · Mediterranean','g-red','45 min','Breakfast','Tom H.','TH',avC(4),'★ 4.9'),
+          rcard('Spinach Frittata','Gluten-free · Italian','g-green','25 min','Breakfast','Julia K.','JK',avC(0),'★ 4.5'),
+          rcard('Acai Granola Bowl','Vegan · High fibre','g-pink','10 min','Breakfast','Ana L.','AL',avC(2),'★ 4.4'),
+        ].join('')}
+      </div>
+      <div class="pgn">
+        <div class="pbn">‹</div><div class="pbn on">1</div>
+        <div class="pbn">2</div><div class="pbn">3</div><div class="pbn">›</div>
+      </div>
+    </div>`;
+
+  if(isMobile) return `
+    <div class="app ${curTheme}">
+      ${mhdr('Discover',`<div class="icon-btn">${ICONS.search}</div>`)}
+      <div style="padding:10px 14px;background:var(--surface);border-bottom:0.5px solid var(--border)">
+        <div class="chips" style="flex-wrap:nowrap;overflow-x:auto">
+          <div class="chip on">All courses</div><div class="chip on">Vegetarian</div>
+          <div class="chip">Italian</div><div class="chip">Keto</div>
+        </div>
+      </div>
+      <div style="flex:1;overflow-y:auto">${results}</div>
+      ${mbnav('discover')}
+    </div>`;
+
+  return `<div class="app ${curTheme}">
+    ${topbar()}
+    <div class="disc-layout" style="flex:1;overflow:hidden">
+      ${filterBar}${results}
+    </div>
+  </div>`;
+};
+
+/* ── RECIPE DETAIL ─── */
+const pageRecipe = () => {
+  const isMobile = curVP==='mobile', isTablet = curVP==='tablet';
+
+  const heroSection = `
+    <div class="rd-hero">
+      <div class="g-red" style="position:absolute;inset:0"></div>
+      <div class="rd-hero-overlay">
+        <div class="rd-hero-title">Miso Glazed Salmon</div>
+        <div class="rd-hero-sub">By Julia K. · Published 3 days ago</div>
+      </div>
+      <div class="rd-hero-acts">
+        <div class="hib">${ICONS.heart}</div>
+        <div class="hib">${ICONS.share}</div>
+        <div class="hib">${ICONS.more}</div>
+      </div>
+      ${!isMobile?`<div style="position:absolute;top:12px;left:14px"><div class="hib">${ICONS.back}</div></div>`:''}
+    </div>`;
+
+  const metaStrip = `
+    <div class="meta-strip">
+      ${[['45','Minutes'],['2','Servings'],['480','Calories'],['214','Saves'],['4.9','Rating']].map(([v,l])=>`<div class="meta-cell"><div class="meta-val">${v}</div><div class="meta-lbl">${l}</div></div>`).join('')}
+      <div style="margin-left:10px;display:flex;align-items:center;gap:6px">
+        <span class="pill pill-red">Seafood</span>
+        <span class="pill pill-teal">Gluten-free</span>
+        <span class="pill pill-blue">High Protein</span>
+        <span class="pill pill-amber">Japanese</span>
+      </div>
+    </div>`;
+
+  const steps = `
+    <div class="sec-title" style="margin-bottom:12px">Method</div>
+    ${[
+      'Mix white miso paste, mirin, sake and sugar until smooth. Marinate salmon for at least 30 minutes.',
+      'Preheat grill to high. Grill skin-side down 4–5 minutes until glaze caramelises and edges char.',
+      'Flip carefully, cook 2 more minutes. Rest 2 minutes before serving with steamed rice.',
+      'Garnish with sesame seeds and thinly sliced spring onions.'
+    ].map((s,i)=>`<div class="step-row"><div class="step-n">${i+1}</div><div class="step-t">${s}</div></div>`).join('')}
+    <div class="div"></div>
+    <div class="sec-title" style="margin-bottom:12px">Reviews (18)</div>
+    <div class="rev-card">
+      <div class="rev-hdr">
+        <div class="rev-av" style="${avC(1)}">MR</div>
+        <span class="rev-name">Marco R.</span>
+        <span class="rev-stars">★★★★★</span>
+        <span class="rev-date" style="margin-left:8px">2d ago</span>
+      </div>
+      <div class="rev-text">Absolutely incredible — the caramelisation on the miso glaze was spot on. Made it twice already this week.</div>
+    </div>
+    <div class="rev-card">
+      <div class="rev-hdr">
+        <div class="rev-av" style="${avC(3)}">SP</div>
+        <span class="rev-name">Sana P.</span>
+        <span class="rev-stars" style="color:var(--amber)">★★★★☆</span>
+        <span class="rev-date" style="margin-left:8px">5d ago</span>
+      </div>
+      <div class="rev-text">Really flavourful and surprisingly quick once the marinade is done. Would add more miso next time.</div>
+    </div>
+    <div class="add-rev">
+      <div class="sec-title" style="margin-bottom:8px">Add a review</div>
+      <div class="star-row">☆ ☆ ☆ ☆ ☆</div>
+      <textarea class="fta" placeholder="Share your thoughts…"></textarea>
+      <button class="btn-sm">Post review</button>
+    </div>`;
+
+  const sideContent = `
+    <div>
+      <div class="sec-title" style="margin-bottom:10px">Ingredients</div>
+      <div class="adj-row">
+        <span style="font-size:12px;color:var(--muted)">Servings</span>
+        <div class="adj-ctrl"><button class="adj-btn">−</button><span class="adj-val">2</span><button class="adj-btn">+</button></div>
+      </div>
+      ${[['Salmon fillet','2 × 180g'],['White miso paste','3 tbsp'],['Mirin','2 tbsp'],['Sake','1 tbsp'],['Sesame seeds','garnish']].map(([n,a])=>`<div class="ingr-row"><div style="display:flex;align-items:center"><div class="ingr-add">+</div><span class="ingr-name">${n}</span></div><span class="ingr-amt">${a}</span></div>`).join('')}
+    </div>
+    <div class="div" style="margin:4px 0"></div>
+    <div>
+      <div class="sec-title" style="margin-bottom:8px">Chef</div>
+      <div class="chef-card">
+        <div class="av" style="${avC(0)};width:38px;height:38px;font-size:13px">JK</div>
+        <div style="flex:1"><div style="font-size:13px;font-weight:500;color:var(--text)">Julia K.</div><div style="font-size:11px;color:var(--muted)">312 recipes · 4.8k followers</div></div>
+        <button class="follow-btn">Follow</button>
+      </div>
+    </div>
+    <div>
+      <div class="sec-title" style="margin-bottom:8px">Nutrition</div>
+      <div class="nutr-grid">
+        ${[['480','kcal'],['42g','protein'],['18g','fat'],['22g','carbs']].map(([v,l])=>`<div class="nutr-cell"><div class="nutr-val">${v}</div><div class="nutr-lbl">${l}</div></div>`).join('')}
+      </div>
+    </div>
+    <div>
+      <div class="sec-title" style="margin-bottom:8px">Allergens</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <span class="pill" style="background:${curTheme==='dark'?'#3D2000':'#FEF3DC'};color:var(--amber)">Fish</span>
+        <span class="pill" style="background:${curTheme==='dark'?'#3D2000':'#FEF3DC'};color:var(--amber)">Soy</span>
+        <span class="pill" style="background:${curTheme==='dark'?'#3D2000':'#FEF3DC'};color:var(--amber)">Sesame</span>
+      </div>
+    </div>`;
+
+  if(isMobile) return `
+    <div class="app ${curTheme}">
+      ${heroSection}
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);border-bottom:0.5px solid var(--border);background:var(--surface)">
+        ${[['45','min'],['2','srv'],['480','kcal'],['4.9','★']].map(([v,l])=>`<div class="meta-cell" style="padding:9px 4px"><div class="meta-val" style="font-size:14px">${v}</div><div class="meta-lbl">${l}</div></div>`).join('')}
+      </div>
+      <div style="flex:1;overflow-y:auto;background:var(--surface);padding:14px">
+        <div class="sec-title" style="margin-bottom:10px">Ingredients</div>
+        ${[['Salmon fillet','2 × 180g'],['White miso paste','3 tbsp'],['Mirin','2 tbsp']].map(([n,a])=>`<div class="ingr-row"><div style="display:flex;align-items:center"><div class="ingr-add">+</div><span class="ingr-name" style="font-size:12px">${n}</span></div><span class="ingr-amt">${a}</span></div>`).join('')}
+        <div class="div"></div>
+        <div class="sec-title" style="margin-bottom:10px">Method</div>
+        ${['Mix miso, mirin, sake and sugar. Marinate salmon 30 min.','Grill skin-side down 4–5 min until glaze caramelises.','Flip, cook 2 more min. Rest then serve with rice.'].map((s,i)=>`<div class="step-row"><div class="step-n">${i+1}</div><div class="step-t" style="font-size:12px">${s}</div></div>`).join('')}
+      </div>
+      ${mbnav('discover')}
+    </div>`;
+
+  return `<div class="app ${curTheme}">
+    ${topbar()}
+    ${heroSection}
+    ${metaStrip}
+    <div class="rd-body" style="${isTablet?'grid-template-columns:1fr 240px':''}flex:1;overflow:hidden">
+      <div class="rd-main" style="overflow-y:auto">${steps}</div>
+      <div class="rd-side" style="overflow-y:auto">${sideContent}</div>
+    </div>
+  </div>`;
+};
+
+/* ── MY PROFILE ─── */
+const pageProfile = () => {
+  const isMobile = curVP==='mobile';
+  const photoCells = ['g-red','g-teal','g-amber','g-purple','g-green','g-pink'].map(g=>`<div class="photo-cell"><div class="${g}" style="width:100%;height:100%;min-height:${isMobile?'80':'100'}px"></div></div>`).join('');
+
+  const hdr = `
+    <div class="prof-hdr" style="${isMobile?'flex-direction:column;text-align:center;align-items:center;gap:12px':''}">
+      <div class="prof-av" style="${avC(1)};${isMobile?'margin:0 auto':''}">AS</div>
+      <div class="${isMobile?'text-center':''}">
+        <div class="prof-name">Alex Smith</div>
+        <div class="prof-email">alex.smith@email.com</div>
+        <div class="prof-stats" style="${isMobile?'justify-content:center':''}">
+          ${[['48','Recipes'],['1.2k','Followers'],['312','Following']].map(([v,l])=>`<div><div class="ps-val">${v}</div><div class="ps-lbl">${l}</div></div>`).join('')}
+        </div>
+      </div>
+      <div class="prof-acts" style="${isMobile?'width:100%':''}">
+        <button class="btn-outline" style="${isMobile?'flex:1':''}">Edit</button>
+        <button class="btn-accent" style="${isMobile?'flex:1':''}">+ Add recipe</button>
+      </div>
+    </div>`;
+
+  return `<div class="app ${curTheme}">
+    ${isMobile?'':topbar()}
+    ${hdr}
+    <div class="prof-tabs">
+      <div class="ptab on">My Recipes</div><div class="ptab">Favourites</div>
+      <div class="ptab">Collections</div>${!isMobile?'<div class="ptab">Shopping List</div>':''}
+    </div>
+    <div class="photo-grid" style="flex:1">${photoCells}</div>
+    ${isMobile?mbnav('profile'):''}
+  </div>`;
+};
+
+/* ── CHEF PROFILE ─── */
+const pageChef = () => {
+  const isMobile = curVP==='mobile';
+  const photoCells = ['g-red','g-blue','g-teal','g-amber','g-clay','g-purple'].map(g=>`<div class="photo-cell"><div class="${g}" style="width:100%;height:100%;min-height:${isMobile?'80':'100'}px"></div></div>`).join('');
+
+  const hdr = `
+    <div class="prof-hdr" style="${isMobile?'flex-direction:column;text-align:center;align-items:center;gap:12px':''}">
+      <div class="prof-av" style="${avC(0)};${isMobile?'margin:0 auto':''}">JK</div>
+      <div>
+        <div class="prof-name">Julia Kim</div>
+        <div class="prof-email">julia.kim@email.com</div>
+        <div class="prof-stats" style="${isMobile?'justify-content:center':''}">
+          ${[['312','Recipes'],['4.8k','Followers'],['4.8 ★','Avg rating']].map(([v,l])=>`<div><div class="ps-val">${v}</div><div class="ps-lbl">${l}</div></div>`).join('')}
+        </div>
+      </div>
+      <div class="prof-acts">
+        <button class="btn-accent">Follow</button>
+      </div>
+    </div>`;
+
+  return `<div class="app ${curTheme}">
+    ${isMobile?'':topbar()}
+    ${hdr}
+    <div class="prof-tabs"><div class="ptab on">Recipes</div></div>
+    <div class="photo-grid" style="flex:1">${photoCells}</div>
+    ${isMobile?mbnav('discover'):''}
+  </div>`;
+};
+
+/* ── ADD RECIPE ─── */
+const pageAdd = () => {
+  const isMobile = curVP==='mobile';
+  const leftForm = `
+    <div>
+      <div class="fsec">
+        <div class="fsec-title">Basic info</div>
+        <input class="finp" placeholder="Recipe title e.g. Spicy Thai Basil Chicken"/>
+        <textarea class="fta2" placeholder="What makes this recipe special?"></textarea>
+        <div class="f3">
+          <div><select class="fsel"><option>Cuisine…</option><option selected>Japanese</option></select></div>
+          <div><select class="fsel"><option>Diet…</option><option selected>Gluten-free</option></select></div>
+          <div><select class="fsel"><option>Course…</option><option selected>Main Course</option></select></div>
+        </div>
+      </div>
+      <div class="fsec">
+        <div class="fsec-title">Ingredients</div>
+        <div class="ing-item"><span>2 × 180g Salmon fillet</span><span class="ing-del">×</span></div>
+        <div class="ing-item"><span>3 tbsp White miso paste</span><span class="ing-del">×</span></div>
+        <div class="ing-row4" style="margin-top:8px">
+          <input class="finp" style="margin:0" placeholder="Search ingredient…"/>
+          <input class="finp" style="margin:0" placeholder="Qty" type="number"/>
+          <select class="fsel"><option>tbsp</option><option>g</option><option>ml</option></select>
+          <button class="btn-sm" style="padding:9px 6px;font-size:16px">+</button>
+        </div>
+      </div>
+      <div class="fsec">
+        <div class="fsec-title">Steps</div>
+        ${['Mix miso paste, mirin, sake and sugar until smooth.','Marinate salmon fillets for at least 30 minutes.',''].map((s,i)=>`<div class="step-item"><div class="step-handle">${i+1}</div><input class="step-inp" value="${s}" placeholder="Add a step…"/><span style="color:var(--hint);cursor:pointer;padding:0 6px">×</span></div>`).join('')}
+        <button class="add-step">+ Add step</button>
+      </div>
+      <div class="fsec">
+        <div class="fsec-title">Tags</div>
+        <div class="tag-row">
+          ${['High Protein','Dinner','Gluten-free','Quick','Asian','Spicy'].map((t,i)=>`<div class="tag-opt${i<3?' on':''}">${t}</div>`).join('')}
+        </div>
+      </div>
+      <div class="fsec">
+        <div class="fsec-title">Allergens</div>
+        <div class="tag-row">
+          ${['Fish','Soy','Sesame','Nuts','Dairy','Eggs'].map((t,i)=>`<div class="tag-opt${i<3?' on':''}">${t}</div>`).join('')}
+        </div>
+      </div>
+    </div>`;
+
+  const rightForm = `
+    <div>
+      <div class="upload-z">
+        <div class="upload-ico">${ICONS.img}</div>
+        <div class="upload-txt">Drop a photo or <span>browse</span></div>
+        <div style="font-size:11px;color:var(--hint);margin-top:4px">JPG, PNG up to 10MB</div>
+      </div>
+      <div class="fsec">
+        <div class="fsec-title">Preview</div>
+        <div class="rcard">
+          <div class="rthumb g-red"></div>
+          <div class="rbody">
+            <div class="rtitle">Miso Glazed Salmon</div>
+            <div class="rsub">Japanese · Dinner</div>
+            <div style="margin-top:6px"><span class="pill pill-teal">Gluten-free</span> <span class="pill pill-blue">High Protein</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="form-btns">
+        <button class="btn-cancel">Discard</button>
+        <button class="btn-save">Publish Recipe</button>
+      </div>
+    </div>`;
+
+  if(isMobile) return `
+    <div class="app ${curTheme}">
+      ${mhdr('New Recipe',`<div style="font-size:12px;color:var(--accent);font-weight:600">Publish</div>`)}
+      <div style="flex:1;overflow-y:auto;padding:14px;background:var(--surface)">
+        <div class="upload-z" style="padding:16px;margin-bottom:12px">
+          <div class="upload-ico">${ICONS.img}</div>
+          <div class="upload-txt" style="font-size:12px">Tap to add a photo</div>
+        </div>
+        <input class="finp" placeholder="Recipe title…"/>
+        <textarea class="fta2" style="height:60px" placeholder="Description…"></textarea>
+        <div class="f2" style="margin-bottom:10px">
+          <select class="fsel"><option>Japanese</option></select>
+          <select class="fsel"><option>Dinner</option></select>
+        </div>
+        <select class="fsel" style="margin-bottom:10px"><option>Vegetarian</option></select>
+        <div class="div"></div>
+        <div class="fsec-title" style="margin-bottom:8px">Ingredients</div>
+        <div class="ing-item" style="font-size:12px"><span>2 × 180g Salmon fillet</span><span class="ing-del">×</span></div>
+        <div class="ing-row4" style="margin-top:8px">
+          <input class="finp" style="margin:0;font-size:12px" placeholder="Ingredient"/>
+          <input class="finp" style="margin:0;font-size:12px" type="number" placeholder="Qty"/>
+          <select class="fsel" style="font-size:12px"><option>tbsp</option></select>
+          <button class="btn-sm" style="padding:7px 6px">+</button>
+        </div>
+        <button class="btn-primary" style="margin-top:16px">Publish Recipe</button>
+      </div>
+      ${mbnav('add')}
+    </div>`;
+
+  return `<div class="app ${curTheme}">
+    ${topbar()}
+    <div style="overflow-y:auto;flex:1">
+      <div class="form-wrap" style="${curVP==='tablet'?'grid-template-columns:1fr 260px':''}">
+        ${leftForm}${rightForm}
+      </div>
+    </div>
+  </div>`;
+};
+
+/* ── COLLECTIONS ─── */
+const pageCollections = () => {
+  const isMobile = curVP==='mobile';
+  const colls = [
+    ['Weekend Brunch','12 recipes',['g-red','g-teal','g-amber','g-purple']],
+    ['High Protein Meals','21 recipes',['g-green','g-red','g-teal',null]],
+    ['Quick Dinners','8 recipes',['g-purple','g-amber',null,'g-green']],
+    ['Date Night Recipes','5 recipes',['g-pink','g-blue','g-clay','g-teal']],
+  ];
+  const cards = colls.map(([name,ct,gs])=>`
+    <div class="coll-card">
+      <div class="coll-prev">
+        ${gs.map(g=>g?`<div class="${g}"></div>`:`<div class="plus-cell">+${name==='High Protein Meals'?8:4}</div>`).join('')}
+      </div>
+      <div class="coll-info">
+        <div><div class="coll-name">${name}</div><div class="coll-ct">${ct}</div></div>
+        <span style="color:var(--hint)">›</span>
+      </div>
+    </div>`).join('');
+
+  const body = `
+    <div class="coll-body" style="overflow-y:auto;flex:1">
+      <button class="new-coll-btn">${ICONS.plus} Create new collection</button>
+      ${cards}
+    </div>`;
+
+  if(isMobile) return `
+    <div class="app ${curTheme}">
+      ${mhdr('Collections',`<div class="icon-btn" style="width:28px;height:28px">${ICONS.plus}</div>`)}
+      ${body}
+      ${mbnav('favorites')}
+    </div>`;
+
+  return `<div class="app ${curTheme}">
+    ${topbar()}
+    <div style="background:var(--surface);border-bottom:0.5px solid var(--border);padding:14px 18px;display:flex;align-items:center;justify-content:space-between">
+      <div class="sl-title">My Collections</div>
+      <button class="btn-accent">+ New Collection</button>
+    </div>
+    ${body}
+  </div>`;
+};
+
+/* ── SHOPPING LIST ─── */
+const pageShopping = () => {
+  const isMobile = curVP==='mobile';
+  const sections = [
+    ['Produce',[['Cherry tomatoes','200g',false],['Baby spinach','100g',false],['Avocado','2 pcs',true]]],
+    ['Dairy & Eggs',[['Free-range eggs','6 pcs',true],['Feta cheese','150g',false]]],
+    ['Pantry',[['White miso paste','1 jar',false],['Sesame oil','1 bottle',true],['Mirin','200ml',false]]],
+  ];
+  const body = `
+    <div class="sl-body" style="overflow-y:auto;flex:1">
+      ${sections.map(([sec,items])=>`
+        <div class="sl-sec">${sec}</div>
+        ${items.map(([n,a,done])=>`
+          <div class="sl-item">
+            <div class="cb${done?' done':''}">${done?ICONS.check:''}</div>
+            <span class="sl-name${done?' x':''}">${n}</span>
+            <span class="sl-amt">${a}</span>
+            <span class="sl-del">×</span>
+          </div>`).join('')}
+      `).join('')}
+      <div class="sl-add">
+        <input class="sl-inp" placeholder="Add an ingredient…"/>
+        <button class="sl-addbtn">Add</button>
+      </div>
+    </div>`;
+
+  return `<div class="app ${curTheme}">
+    ${isMobile?mhdr('Shopping List',`<div class="icon-btn" style="width:28px;height:28px">${ICONS.share}</div>`):topbar()}
+    <div class="sl-hdr" style="${isMobile?'display:none':''}">
+      <div class="sl-title">Shopping List</div>
+      <div style="display:flex;gap:8px"><div class="icon-btn">${ICONS.share}</div><div class="icon-btn">${ICONS.check}</div></div>
+    </div>
+    <div class="sl-sum">
+      ${[['11','Total'],['4','Done'],['7','Needed']].map(([v,l])=>`<div class="sum-cell"><div class="sum-val">${v}</div><div class="sum-lbl">${l}</div></div>`).join('')}
+    </div>
+    ${body}
+    ${isMobile?mbnav('list'):''}
+  </div>`;
+};
+
+/* ── FAVOURITES ─── */
+const pageFavorites = () => {
+  const isMobile = curVP==='mobile', isTablet = curVP==='tablet';
+  const items = [
+    ['Miso Glazed Salmon','Japanese · 45 min · ★ 4.9','g-red','45 min'],
+    ['Shakshuka with Feta','Mediterranean · 20 min · ★ 4.8','g-teal','20 min'],
+    ['Paneer Tikka Masala','Indian · 35 min · ★ 4.7','g-amber','35 min'],
+    ['Matcha Lava Cake','Japanese · 50 min · ★ 4.6','g-purple','50 min'],
+    ['Spinach Frittata','Italian · 25 min · ★ 4.5','g-green','25 min'],
+    ['Thai Basil Chicken','Thai · 30 min · ★ 4.8','g-pink','30 min'],
+    ['Berry Smoothie Bowl','Vegan · 15 min · ★ 4.4','g-blue','15 min'],
+    ['Beef Bourguignon','French · 60 min · ★ 4.9','g-clay','60 min'],
+  ];
+
+  if(isMobile) return `
+    <div class="app ${curTheme}">
+      ${mhdr('Favourites',`<span style="font-size:11px;color:var(--muted)">24 saved</span>`)}
+      <div style="flex:1;overflow-y:auto;padding:12px 14px;display:flex;flex-direction:column;gap:10px">
+        ${items.slice(0,5).map(([t,s,g,time])=>rcard_wide(t,s,g,time,true)).join('')}
+      </div>
+      ${mbnav('favorites')}
+    </div>`;
+
+  const gridCls = isTablet ? 'r-grid-2' : 'r-grid-4';
+  return `<div class="app ${curTheme}">
+    ${topbar()}
+    <div class="fav-hdr">
+      <div class="fav-title">Favourites</div>
+      <span style="font-size:13px;color:var(--muted)">24 saved recipes</span>
+    </div>
+    <div class="main-area" style="flex:1;overflow-y:auto">
+      <div class="content">
+        <div class="${gridCls}">
+          ${items.map(([t,s,g,time])=>rcard(t,s,g,time,'','','','','♥',true)).join('')}
+        </div>
+      </div>
+    </div>
+  </div>`;
+};
+
+/* ═══ RENDER ENGINE ═════════════════════════════════════ */
+const pages = {
+  home: pageHome, login: pageLogin, register: pageRegister,
+  discover: pageDiscover, recipe: pageRecipe,
+  profile: pageProfile, chef: pageChef, add: pageAdd,
+  collections: pageCollections, shopping: pageShopping, favorites: pageFavorites
+};
+
+function render() {
+  const device = document.getElementById('device');
+  const label  = document.getElementById('frame-label');
+  if (!device) return;
+
+  device.className = `device-shell ${curVP} ${curTheme}`;
+  label.textContent = `${curVP[0].toUpperCase()+curVP.slice(1)} · ${curTheme[0].toUpperCase()+curTheme.slice(1)}`;
+
+  const fn = pages[curPage];
+  if (fn) device.innerHTML = fn();
+}
+
+function setTheme(t,btn) {
+  curTheme = t;
+  document.querySelectorAll('#theme-group .tb-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+function setVP(vp,btn) {
+  curVP = vp;
+  document.querySelectorAll('#vp-group .tb-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+function setPage(p,btn) {
+  curPage = p;
+  document.querySelectorAll('#page-nav .page-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+render();
+</script>
+</body>
+</html>
